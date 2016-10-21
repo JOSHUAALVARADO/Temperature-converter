@@ -8,22 +8,53 @@
             width: 400px;
             height: 400px;
         }
+
+        input {color: #2b3efb;
+        }
+        
+
+.james{
+    color: #3f8082;
+}
+
+
     </style>
     <script type="text/javascript">
-        <!--
-        function convertToC() {
-            var fTempVal = parseFloat(document.getElementById('fTemp').value);
-            var cTempVal = (fTempVal - 32) * (5/9);
-            document.getElementById('cTemp').value = cTempVal;
-        }
 
-        function convertToF() {
-            var cTempVal = parseFloat(document.getElementById('cTemp').value);
-            var fTempVal = (cTempVal * (9/5)) + 32;
-            document.getElementById('fTemp').value = fTempVal;
+
+
+        function  convert(unit) {
+            var cTempVal;
+            var fTempVal;
+
+
+
+            try {
+                if (unit == 'c') {
+                    //cTempVal = parseFloat(document.getElementById('cTemp').value);
+                    cTempVal = prompt("Enter a Celsius value", "0");
+                    fTempVal = (cTempVal * (9 / 5)) + 32;
+                    document.getElementById('fTemp').value = fTempVal.toFixed(2);
+
+                }
+                else {
+                    do {
+                        x = prompt("Give me a number", "");
+                    } while (isNaN(x));
+
+                    //fTempVal = parseFloat(document.getElementById('fTemp').value);
+                    fTempVal = prompt("Enter a fahrenheit value", "0");
+                    cTempVal = (fTempVal - 32) * (5 / 9);
+                    document.getElementById('cTemp').value = cTempVal;
+                }
+            }
+            catch (e) {
+                console.log(e);
+            }
+
         }
-        // -->
     </script>
+
 </head>
 </head>
 <style>
@@ -33,35 +64,44 @@
 </style>
 <body>
 <center><font size="6">Temperature Converter </font>
-    <p> Click one of the buttons below to begin:  </p></center>
+    <h1>Click one of the buttons below to begin: </h1> Click one of the buttons below to begin:  </p></center>
 
-<img src="THC.jpg" alt="Temps">
+
 
 
 </body>
 </html>
 
 <form name="conversionForm">
-    <table border="1">
+    <table align="center" border="0">
         <tbody>
+
         <tr>
             <td>Fahrenheit</td>
             <td>
-                <input name="fTemp" id="fTemp" type="text" />
+                <input name="fTemp" id="fTemp" type="text" readonly/>
             </td>
             <td>
-                <button type="button" onclick="convertToC();return false">Convert to Celsius</button>
+                <button type="button" onclick="convert('f')">Convert to Celsius</button>
             </td>
+        </tr>
+        <tr>
+            <td class="james"> Equals</td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>Celsius</td>
             <td>
-                <input name="cTemp" id="cTemp" type="text" />
+                <input name="cTemp" id="cTemp" type="text" readonly/>
             </td>
+
             <td>
-                <button type="button" onclick="convertToF();return false">Convert to Fahrenheit</button>
+                <button type="button" onclick="convert('c')">Convert to Fahrenheit</button>
             </td>
         </tr>
+
         </tbody>
     </table>
+    <img src="THC.jpg" alt="Mountain View" style="width:304px;height:228px;">
 </form>
